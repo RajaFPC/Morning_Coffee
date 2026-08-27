@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		66F1A9C6304084390053A9C1 /* Morning_Coffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Morning_Coffee.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		66F1A9C6304084390053A9C1 /* Morning_Coffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Morning_Coffee.app; path = "/Users/lifeoftheparty/Documents/Learn Swift/Morning Coffee Project/Morning_Coffee/build/Debug-iphoneos/Morning_Coffee.app"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -33,16 +33,7 @@
 			isa = PBXGroup;
 			children = (
 				66F1A9C8304084390053A9C1 /* Morning_Coffee */,
-				66F1A9C7304084390053A9C1 /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		66F1A9C7304084390053A9C1 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				66F1A9C6304084390053A9C1 /* Morning_Coffee.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,7 +86,7 @@
 			mainGroup = 66F1A9BD304084390053A9C1;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 66F1A9C7304084390053A9C1 /* Products */;
+			productRefGroup = 66F1A9BD304084390053A9C1;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
