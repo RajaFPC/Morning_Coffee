@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(CoffeeManager.self) private var coffeeManager
     var body: some View {
         VStack{
             // Title
-            Text("It's time for your morning coffee")
+            Text("It's time for your morning coffee ☕️")
                 .font(.system(size: 20))
                 .foregroundStyle(Color("DarkBrown"))
             
@@ -19,23 +20,29 @@ struct ContentView: View {
             ZStack{
                 RoundedRectangle(cornerRadius: 16)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    
                     .foregroundStyle(Color("DarkGray"))
                 
-                Text("Images coming soon...")
-                    .foregroundStyle(Color.white)
+                if let coffee = coffeeManager.coffee {
+                    AsyncImage(url: coffee.file)
+                }else{
+                    Text("Images coming soon...")
+                        .foregroundStyle(Color.white)
+                }
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 25)
             
             // Button
             Button{
-                // TODO: CTA functionality
+                Task { do {try await coffeeManager.getCoffee()
+                } catch { print(error)
+                }
+                }
             } label: {
                 ZStack{
                     RoundedRectangle(cornerRadius:8)
                         .foregroundStyle(Color("DarkBrown"))
-                        .frame(maxWidth: .infinity)
+                        .frame(maxWidth: .infinity, maxHeight: 50)
                     Text("Call To Action")
                         .bold()
                         .foregroundStyle(Color.white)
@@ -44,6 +51,11 @@ struct ContentView: View {
                 .padding(.bottom, 32)
                 
             }
+        }
+        .task {
+            do { try await coffeeManager.getCoffee()}
+            catch { print(error)}
+            
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity) // for the full screen to be used
     }

@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct Morning_CoffeeApp: App {
+    @State private var coffeeManager = CoffeeManager()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(coffeeManager)
         }
     }
 }
