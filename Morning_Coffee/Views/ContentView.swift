@@ -23,15 +23,15 @@ struct ContentView: View {
                     .foregroundStyle(Color("DeepGray"))
                 
                 
-                AsyncImage(url: coffeeManager.coffee?.file) { image in
+               AsyncImage(url: coffeeManager.coffee?.file) { image in
                     image.resizable().aspectRatio(contentMode: .fill)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
                 } placeholder: {
                     Text("Images coming soon...")
                         .foregroundStyle(Color.white)
                 }
-                
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+                .clipped()
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 25)
