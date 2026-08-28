@@ -20,17 +20,22 @@ struct ContentView: View {
             ZStack{
                 RoundedRectangle(cornerRadius: 16)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .foregroundStyle(Color("DarkGray"))
+                    .foregroundStyle(Color("DeepGray"))
                 
-                if let coffee = coffeeManager.coffee {
-                    AsyncImage(url: coffee.file)
-                }else{
+                
+                AsyncImage(url: coffeeManager.coffee?.file) { image in
+                    image.resizable().aspectRatio(contentMode: .fill)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                } placeholder: {
                     Text("Images coming soon...")
                         .foregroundStyle(Color.white)
                 }
+                
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 25)
+//            .border(Color.red, width: 3)
             
             // Button
             Button{
@@ -60,6 +65,7 @@ struct ContentView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity) // for the full screen to be used
     }
 }
+
 #Preview {
     ContentView()
 }
