@@ -24,7 +24,7 @@ struct ContentView: View {
                 
                 
                AsyncImage(url: coffeeManager.coffee?.file) { image in
-                    image.resizable().aspectRatio(contentMode: .fill)
+                    image.resizable().aspectRatio(contentMode: .fit)
                 } placeholder: {
                     Text("Images coming soon...")
                         .foregroundStyle(Color.white)
@@ -35,7 +35,6 @@ struct ContentView: View {
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 25)
-//            .border(Color.red, width: 3)
             
             // Button
             Button{
