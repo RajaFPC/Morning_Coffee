@@ -14,7 +14,13 @@ struct ContentView: View {
             // Title
             Text("It's time for your morning coffee ☕️")
                 .font(.system(size: 20))
-                .foregroundStyle(Color("DarkBrown"))
+                .foregroundStyle(LinearGradient(
+                    colors: [Color("LightBrown"), Color("DarkBrown")],
+                    startPoint: .leading,
+                    endPoint: .trailing
+                ))
+//                .foregroundStyle(Color("DarkBrown"))
+            
             
             // Content Box
             ZStack{
@@ -23,11 +29,12 @@ struct ContentView: View {
                     .foregroundStyle(Color("DeepGray"))
                 ScrollView{
                     VStack {
-                        if coffeeManager.coffee.isEmpty {Text("No Images yet")} else {
+                        if coffeeManager.coffee.isEmpty {Text("No Images yet...")} else {
                             ForEach(coffeeManager.coffee){ coffeeItem in AsyncImage(url: coffeeItem.file) { image in
                                 image.resizable().aspectRatio(contentMode: .fit)}
                                 placeholder: {
                                     Text("Images coming soon...")
+                                        .foregroundStyle(Color.white)
                                 }
                             }
                             
@@ -47,6 +54,7 @@ struct ContentView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 16))
                 .clipped()
             }
+            .border(Color("LightBrown"), width: 1)
             .padding(.horizontal, 16)
             .padding(.vertical, 25)
             
@@ -65,6 +73,7 @@ struct ContentView: View {
                         .bold()
                         .foregroundStyle(Color.white)
                 }
+                .border(Color("LightBrown"), width: 1)
                 .padding(.horizontal, 32)
                 .padding(.bottom, 32)
                 
@@ -76,6 +85,8 @@ struct ContentView: View {
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity) // for the full screen to be used
+
+        .background(Color("LightCream"))
     }
 }
 
