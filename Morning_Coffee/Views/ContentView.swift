@@ -21,14 +21,28 @@ struct ContentView: View {
                 RoundedRectangle(cornerRadius: 16)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .foregroundStyle(Color("DeepGray"))
-                
-                
+                ScrollView{
+                    VStack {
+                        if coffeeManager.coffee.isEmpty {Text("No Images yet")} else {
+                            ForEach(coffeeManager.coffee){ coffeeItem in AsyncImage(url: coffeeItem.file) { image in
+                                image.resizable().aspectRatio(contentMode: .fit)}
+                                placeholder: {
+                                    Text("Images coming soon...")
+                                }
+                            }
+                            
+                        }
+                        
+                    }
+                }
+/*
                AsyncImage(url: coffeeManager.coffee?.file) { image in
                     image.resizable().aspectRatio(contentMode: .fit)
                 } placeholder: {
                     Text("Images coming soon...")
                         .foregroundStyle(Color.white)
                 }
+ */
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .clipShape(RoundedRectangle(cornerRadius: 16))
                 .clipped()

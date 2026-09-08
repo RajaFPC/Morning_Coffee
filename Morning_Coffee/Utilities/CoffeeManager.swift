@@ -9,7 +9,7 @@ import Foundation
 
 @Observable
 class CoffeeManager {
-    var coffee: CoffeeImage?
+    var coffee: [CoffeeImage] = []
     
     func getCoffee() async throws {
         print("Call Initiated")
@@ -19,7 +19,7 @@ class CoffeeManager {
             // using _ here instead of URLResponse for any status codes since we aren't expecting them here for a proj like this.
             let decoder = JSONDecoder()
             let coffeePicture = try decoder.decode(CoffeeImage.self, from: data)
-            self.coffee = coffeePicture
+            coffee.insert(coffeePicture, at : 0)
         } catch {
             print("Failure caused by: \(error)")
             throw error
@@ -28,8 +28,12 @@ class CoffeeManager {
         }
     }
 
-struct CoffeeImage : Codable {
+struct CoffeeImage: Codable, Identifiable {
+    let id = UUID()
     let file: URL
+    
+    enum CodingKeys: String, CodingKey {
+        case file  // only "file" is expected from JSON — id is deliberately left out
+    }
 }
-
 
