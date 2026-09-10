@@ -53,8 +53,11 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .clipShape(RoundedRectangle(cornerRadius: 16))
                 .clipped()
+                
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(Color("LightBrown"), lineWidth: 1)
+                
             }
-            .border(Color("LightBrown"), width: 1)
             .padding(.horizontal, 16)
             .padding(.vertical, 25)
             
